@@ -2,7 +2,9 @@ package ar.edu.undec.prog3.domain;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.format.TextStyle;
 import java.util.Collection;
+import java.util.Locale;
 
 public class Vuelo {
 
@@ -36,8 +38,29 @@ public class Vuelo {
 	}
 
 	public String getDetails() {
-		// TODO Auto-generated method stub
-		return null;
+		StringBuilder stringFlight = new StringBuilder();
+		stringFlight.append("Vuelo " + this.codigoVuelo + " - " + this.avion.getModelo() + "\r\n");
+		stringFlight.append(fechaHoraSpanish(this.fechaHoraSalida) + " " + this.salida.getCodigo() + " ("
+				+ this.salida.getCiudad() + " - " + this.salida.getNombre() + ")" + "\r\n");
+		stringFlight.append(fechaHoraSpanish(this.fechaHoraArribo) + " " + this.arribo.getCodigo() + " ("
+				+ this.arribo.getCiudad() + " - " + this.arribo.getNombre() + ")" + "\r\n");
+		stringFlight.append(
+				"Operado por " + this.aerolinea.getNombre() + ". Duración " + this.getDurationInHoursAndMinutes());
+		return stringFlight.toString();
+	}
+
+	private String getDurationInHoursAndMinutes() {
+		return Duration.between(fechaHoraSalida, fechaHoraArribo).toHours() + "h "
+				+ Duration.between(fechaHoraSalida, fechaHoraArribo).toMinutes() % 60 + "m";
+	}
+
+	private String fechaHoraSpanish(LocalDateTime pDateTime) {
+		Locale argentina = new Locale("es", "AR");
+		String dia = pDateTime.getDayOfWeek().getDisplayName(TextStyle.FULL, argentina);
+
+		return dia.substring(0, 1).toUpperCase() + dia.substring(1) + " " + pDateTime.getDayOfMonth() + " de "
+				+ pDateTime.getMonth().getDisplayName(TextStyle.FULL, argentina) + " " + pDateTime.getHour() + ":"
+				+ pDateTime.getMinute();
 	}
 
 	public Collection<Piloto> getPilotos() {

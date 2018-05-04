@@ -10,4 +10,9 @@ public class Aerolinea {
 		this.nombre = nombre;
 	}
 
+	public String getNombre() {
+		// TODO Auto-generated method stub
+		return this.nombre;
+	}
+
 }

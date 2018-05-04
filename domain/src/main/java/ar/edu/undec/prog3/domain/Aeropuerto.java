@@ -19,4 +19,19 @@ public class Aeropuerto {
 		return this.nombre + " - " + this.ciudad.getName() + " - " + this.codigo;
 	}
 
+	public String getCiudad() {
+		// TODO Auto-generated method stub
+		return this.ciudad.getName();
+	}
+
+	public String getNombre() {
+		// TODO Auto-generated method stub
+		return this.nombre;
+	}
+
+	public String getCodigo() {
+		// TODO Auto-generated method stub
+		return this.codigo;
+	}
+
 }

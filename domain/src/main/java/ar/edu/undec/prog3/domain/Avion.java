@@ -16,4 +16,8 @@ public class Avion {
 		this.listaAsientos = listaAsientos;
 	}
 
+	public String getModelo() {
+		return this.modelo;
+	}
+
 }
