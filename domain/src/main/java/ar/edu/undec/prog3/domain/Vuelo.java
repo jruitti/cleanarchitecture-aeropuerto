@@ -34,7 +34,6 @@ public class Vuelo {
 
 	public Long getDurationInMinutes() {
 		return Duration.between(fechaHoraSalida, fechaHoraArribo).toMinutes();
-
 	}
 
 	public String getDetails() {
@@ -56,7 +55,7 @@ public class Vuelo {
 
 	private String fechaHoraSpanish(LocalDateTime pDateTime) {
 		Locale argentina = new Locale("es", "AR");
-		String dia = pDateTime.getDayOfWeek().getDisplayName(TextStyle.FULL, argentina);
+		String dia = pDateTime.getDayOfWeek().getDisplayName(TextStyle.FULL, argentina).toLowerCase();
 
 		return dia.substring(0, 1).toUpperCase() + dia.substring(1) + " " + pDateTime.getDayOfMonth() + " de "
 				+ pDateTime.getMonth().getDisplayName(TextStyle.FULL, argentina) + " " + pDateTime.getHour() + ":"
